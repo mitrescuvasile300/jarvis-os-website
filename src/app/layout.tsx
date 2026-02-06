@@ -3,7 +3,11 @@ export const metadata = {
   description: 'AI Operating System',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
       <body>{children}</body>
