@@ -1,9 +1,13 @@
 import { Hero } from '@/components/sections/Hero';
+import { Features } from '@/components/sections/Features';
+import { Pricing } from '@/components/sections/Pricing';
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-slate-950">
       <Hero />
+      <Features />
+      <Pricing />
     </main>
   );
 }
