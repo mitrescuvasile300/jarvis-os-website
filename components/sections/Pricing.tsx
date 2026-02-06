@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { CheckoutButton } from '@/components/CheckoutButton';
 
 const plans = [
   { name: 'Free', price: '$0', features: ['1 AI Agent', '100 Tasks', 'Basic Support'] },
@@ -33,9 +34,15 @@ export function Pricing() {
                   </li>
                 ))}
               </ul>
-              <button className={`w-full py-3 rounded-lg font-bold ${plan.popular ? 'bg-emerald-500 text-slate-900' : 'bg-slate-700'}`}>
-                {plan.popular ? 'Get Pro' : 'Get Started'}
-              </button>
+              {plan.popular ? (
+                <CheckoutButton className="w-full py-3 rounded-lg font-bold bg-emerald-500 text-slate-900 hover:bg-emerald-400 transition-colors">
+                  Get Pro
+                </CheckoutButton>
+              ) : (
+                <button className="w-full py-3 rounded-lg font-bold bg-slate-700 hover:bg-slate-600 transition-colors">
+                  Get Started
+                </button>
+              )}
             </motion.div>
           ))}
         </div>
