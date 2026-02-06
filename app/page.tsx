@@ -1,3 +1,9 @@
+import { Hero } from '@/components/sections/Hero';
+
 export default function Home() {
-  return <h1>Jarvis OS Working!</h1>
+  return (
+    <main>
+      <Hero />
+    </main>
+  );
 }
