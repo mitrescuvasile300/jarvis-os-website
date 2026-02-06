@@ -14,7 +14,7 @@ export function Pricing() {
     <section className="py-20 bg-slate-900 text-white">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">Pricing</h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
