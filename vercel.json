@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npx next build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "rm -f package-lock.json && npm install --force"
+  "installCommand": "npm ci --legacy-peer-deps"
 }
