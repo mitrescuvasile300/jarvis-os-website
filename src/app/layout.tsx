@@ -1,24 +1,12 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+export const metadata = {
+  title: 'Jarvis OS',
+  description: 'AI Operating System',
+}
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Jarvis OS — AI Operating System for Ambitious People",
-  description: "The complete AI-powered operating system that transforms scattered thoughts into autonomous execution. One-time payment, lifetime access.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
