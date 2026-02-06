@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis OS — Your Complete AI Operating System</title>
+    <meta name="description" content="Transform chaos into autonomous productivity with Jarvis OS. The complete Notion + AI system for freelancers and solopreneurs.">
+    <link rel="icon" type="image/x-icon" href="assets/logo_final/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a1a2e;
+            --accent: #00ff88;
+            --text: #333;
+            --text-light: #666;
+            --bg: #fff;
+            --bg-alt: #f8f9fa;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%);
+            color: white;
+            padding: 10rem 0 6rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero .highlight {
+            color: var(--accent);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .price-tag {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Problem Section */
+        .problem {
+            padding: 5rem 0;
+            background: var(--bg-alt);
+        }
+        
+        .problem h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Solution */
+        .solution {
+            padding: 5rem 0;
+        }
+        
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .solution h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .solution ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .solution li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .solution li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* Features */
+        .features {
+            padding: 5rem 0;
+            background: var(--bg-alt);
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .pricing h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .price-card {
+            background: var(--primary);
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .price {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            opacity: 0.6;
+            font-size: 1.5rem;
+        }
+        
+        .price-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .price-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .price-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .solution-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🦞 AgentFlow Labs</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your Brain is for Ideas.<br><span class="highlight">Not for Remembering.</span></h1>
+            <p>The complete AI-powered operating system that transforms scattered thoughts into autonomous execution. Built by a 6-figure freelancer who actually uses it daily.</p>
+            <a href="#pricing" class="cta-button">Get Jarvis OS — $29</a>
+            <p class="price-tag">One-time payment. Instant access. 30-day guarantee.</p>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <h2>Does this sound familiar?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">😵</div>
+                    <h3>Too Many Tasks</h3>
+                    <p>Overwhelmed with tasks across multiple apps and sticky notes.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">😰</div>
+                    <h3>Scattered Ideas</h3>
+                    <p>Great ideas lost in different notes, never acted upon.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">😤</div>
+                    <h3>Missed Goals</h3>
+                    <p>Goals set in January, abandoned by March. Every year.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🤯</div>
+                    <h3>Information Overload</h3>
+                    <p>10 apps, 100 notifications, zero focus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <div>
+                    <h2>Meet Jarvis OS — Your External Brain</h2>
+                    <p>A complete operating system for your life and work. Built in Notion. Powered by AI. Designed for results.</p>
+                    <ul>
+                        <li>Knows your goals and shows you exactly what to do</li>
+                        <li>Remembers everything so your brain is free to create</li>
+                        <li>Runs autonomously with pre-built automations</li>
+                        <li>Integrates your AI assistant that truly understands you</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 8rem;">🎯</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Everything You Need. Nothing You Don't.</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Goals Hub</h3>
+                    <p>Yearly → Quarterly → Monthly → Weekly → Daily. Everything connected. Nothing falls through the cracks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Task Management</h3>
+                    <p>Kanban board, priority matrix, recurring automations. Know exactly what to work on.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Knowledge Base</h3>
+                    <p>Your second brain. Ideas, resources, notes — all in one place. Searchable forever.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Automation Center</h3>
+                    <p>Morning routines, weekly reviews, monthly reports. Pre-built automations save 10+ hours/week.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Integration</h3>
+                    <p>Step-by-step guide to connect Claude, GPT, or any AI. Your personal Jarvis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Lifetime Updates</h3>
+                    <p>Buy once, get all future updates free. System evolves with you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Get Jarvis OS Today</h2>
+            <div class="price-card">
+                <div class="price-original">$136 value</div>
+                <div class="price">$29</div>
+                <p>One-time payment. Lifetime access.</p>
+                <ul class="price-features">
+                    <li>Complete Notion Template ($49 value)</li>
+                    <li>20-Page Setup Guide ($29 value)</li>
+                    <li>AI Integration Tutorial ($39 value)</li>
+                    <li>5 Automation Scripts ($19 value)</li>
+                    <li>Lifetime Updates (Priceless)</li>
+                    <li>30-Day Money-Back Guarantee</li>
+                </ul>
+                <a href="#" class="cta-button">Get Instant Access — $29</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 AgentFlow Labs. Built with ❤️ by someone who uses this system daily.</p>
+            <div class="footer-links">
+                <a href="#">Support</a>
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
