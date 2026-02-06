@@ -1,16 +1,22 @@
 import { Navbar } from '@/components/sections/Navbar';
-import { Hero } from '@/components/sections/Hero';
-import { Features } from '@/components/sections/Features';
-import { Pricing } from '@/components/sections/Pricing';
 import { Footer } from '@/components/sections/Footer';
+import {
+  HeroSection,
+  ProblemSolution,
+  FeaturesPreview,
+  SocialProof,
+  FinalCTA,
+} from '@/components/sections/Landing';
 
 export default function Home() {
   return (
-    <main className="bg-slate-950">
+    <main className="bg-slate-950 text-white antialiased">
       <Navbar />
-      <Hero />
-      <Features />
-      <Pricing />
+      <HeroSection />
+      <ProblemSolution />
+      <FeaturesPreview />
+      <SocialProof />
+      <FinalCTA />
       <Footer />
     </main>
   );
