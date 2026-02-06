@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="bg-slate-950 border-t border-slate-800 py-12">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="col-span-2">
             <h3 className="text-2xl font-bold text-white mb-4">Jarvis OS</h3>
