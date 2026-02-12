@@ -17,7 +17,7 @@ export function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-slate-300 hover:text-white transition">Features</a>
+            <a href="/features" className="text-slate-300 hover:text-white transition">Features</a>
             <a href="#pricing" className="text-slate-300 hover:text-white transition">Pricing</a>
             <a href="#" className="text-slate-300 hover:text-white transition">Docs</a>
             <button className="bg-emerald-500 text-slate-900 font-semibold px-4 py-2 rounded-lg hover:bg-emerald-400 transition">
@@ -38,7 +38,7 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden py-4 border-t border-slate-800">
             <div className="flex flex-col gap-4">
-              <a href="#features" className="text-slate-300 hover:text-white transition">Features</a>
+              <a href="/features" className="text-slate-300 hover:text-white transition">Features</a>
               <a href="#pricing" className="text-slate-300 hover:text-white transition">Pricing</a>
               <a href="#" className="text-slate-300 hover:text-white transition">Docs</a>
               <button className="bg-emerald-500 text-slate-900 font-semibold px-4 py-2 rounded-lg hover:bg-emerald-400 transition w-full">
