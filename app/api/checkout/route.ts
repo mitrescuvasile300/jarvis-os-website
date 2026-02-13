@@ -1,45 +1,27 @@
 import { NextResponse } from 'next/server';
 
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+// Stripe Payment Link — will be updated once created in Stripe
+const PAYMENT_LINK = process.env.STRIPE_PAYMENT_LINK || '';
 
 export async function POST(req: Request) {
   try {
-    const { priceId, email } = await req.json();
-    
-    if (!STRIPE_SECRET_KEY) {
-      console.error('STRIPE_SECRET_KEY not configured');
-      // Return mock URL for testing
+    if (!PAYMENT_LINK) {
+      // Fallback: redirect to pricing page if payment link not configured
       return NextResponse.json({ 
-        url: '/success?session_id=test_session_123',
-        status: 'test_mode'
+        url: '/pricing',
+        status: 'payment_link_not_configured'
       });
     }
 
-    // TODO: Implement real Stripe checkout
-    // For now, return test URL
-    return NextResponse.json({ 
-      url: '/success?session_id=test_session_123',
-      status: 'test_mode'
-    });
+    const { email } = await req.json();
     
-    /* Real implementation would be:
-    const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2023-10-16' });
-    
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [{
-        price: priceId,
-        quantity: 1,
-      }],
-      mode: 'payment',
-      success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.get('origin')}/`,
-      customer_email: email,
-    });
-    
-    return NextResponse.json({ url: session.url });
-    */
-    
+    // Build payment link URL with prefilled email if provided
+    let url = PAYMENT_LINK;
+    if (email) {
+      url += `?prefilled_email=${encodeURIComponent(email)}`;
+    }
+
+    return NextResponse.json({ url });
   } catch (error) {
     console.error('Checkout error:', error);
     return NextResponse.json(
@@ -47,4 +29,11 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+}
+
+export async function GET() {
+  if (!PAYMENT_LINK) {
+    return NextResponse.redirect(new URL('/pricing', 'https://jarvis-os-website.vercel.app'));
+  }
+  return NextResponse.redirect(PAYMENT_LINK);
 }
