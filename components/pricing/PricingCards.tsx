@@ -18,7 +18,7 @@ const pricingTiers = [
       { text: "Unlimited agents", included: false },
       { text: "Priority support", included: false },
     ],
-    cta: { label: "Get Started Free", href: "/signup" },
+    cta: { label: "Get Started Free", href: "#waitlist" },
     highlight: false,
   },
   {
@@ -35,7 +35,7 @@ const pricingTiers = [
       { text: "All future updates", included: true },
       { text: "API access", included: true },
     ],
-    cta: { label: "Get Jarvis Pro", href: "/checkout" },
+    cta: { label: "Get Jarvis Pro — $29", href: "/pricing#checkout" },
     highlight: true,
   },
   {
@@ -51,7 +51,7 @@ const pricingTiers = [
       { text: "On-premise option", included: true },
       { text: "Custom training", included: true },
     ],
-    cta: { label: "Contact Sales", href: "/contact" },
+    cta: { label: "Contact Sales", href: "mailto:contact@jarvis-os.com" },
     highlight: false,
   },
 ];

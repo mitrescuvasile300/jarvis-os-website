@@ -20,11 +20,21 @@ export function FinalCTA(): JSX.Element {
     if (!email) return;
     
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setEmail('');
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setIsSubmitted(true);
+        setEmail('');
+      }
+    } catch (err) {
+      console.error('Signup error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -67,7 +77,7 @@ export function FinalCTA(): JSX.Element {
           </h2>
 
           <p className="text-lg sm:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-            Join 1,000+ founders, developers, and creators who transformed their workflow with Jarvis OS.
+            Get early access to the AI operating system that works for you — not the other way around.
           </p>
 
           {/* Email Capture Form */}
