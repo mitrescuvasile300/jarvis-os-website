@@ -19,10 +19,9 @@ interface MemoryLayer {
   icon: React.ReactNode;
 }
 
-interface Testimonial {
+interface Highlight {
   quote: string;
-  author: string;
-  role: string;
+  label: string;
 }
 
 interface DeepDiveData {
@@ -32,7 +31,8 @@ interface DeepDiveData {
   titleHighlight: string;
   description: string;
   bullets: Bullet[];
-  testimonial: Testimonial;
+  highlight: Highlight;
+  image: string;
   howItWorks?: { title: string; steps: Step[] };
   memoryLayers?: { title: string; layers: MemoryLayer[] };
   flowSteps?: { title: string; steps: { icon: React.ReactNode; label: string; description: string }[] };
@@ -60,11 +60,11 @@ const sections: DeepDiveData[] = [
         { number: '04', label: 'Learn', description: 'Feedback loop improves performance' },
       ],
     },
-    testimonial: {
-      quote: 'I have 5 agents running 24/7. One handles my inbox, another monitors competitors, and three work on code reviews. I barely lift a finger anymore.',
-      author: 'Alex Rivera',
-      role: 'Founder @ DevScale',
+    highlight: {
+      quote: 'Specialized agents outperform generalist AI by 3-5x on domain-specific tasks — because they stay focused.',
+      label: '⚡ Why it matters',
     },
+    image: '/feature-agents.webp',
   },
   {
     position: 'image-left',
@@ -87,11 +87,11 @@ const sections: DeepDiveData[] = [
         { name: 'Semantic', description: 'Meaning & relationships', icon: <Network className="w-4 h-4" /> },
       ],
     },
-    testimonial: {
-      quote: 'Three months in, Jarvis knows my codebase better than I do. It references conversations from weeks ago and connects dots I never would have made.',
-      author: 'Sarah Chen',
-      role: 'Senior Developer @ Stripe',
+    highlight: {
+      quote: 'Unlike ChatGPT, Jarvis remembers everything. Your context compounds over time — agents get smarter the more you use them.',
+      label: '🧠 The difference',
     },
+    image: '/feature-memory.webp',
   },
   {
     position: 'image-right',
@@ -114,11 +114,11 @@ const sections: DeepDiveData[] = [
         { icon: <CheckCircle className="w-4 h-4" />, label: 'Complete', description: 'Execute and log' },
       ],
     },
-    testimonial: {
-      quote: 'I set up a content pipeline on Monday. By Friday, I had 47 blog post drafts, all scheduled. I literally forgot I had set it up.',
-      author: 'Marcus Johnson',
-      role: 'Content Lead @ TechCorp',
+    highlight: {
+      quote: 'Set up a workflow once and walk away. Jarvis handles multi-step tasks end-to-end, only pinging you when a human decision is truly needed.',
+      label: '🚀 True automation',
     },
+    image: '/feature-execution.webp',
   },
 ];
 
@@ -215,24 +215,23 @@ function DeepDiveSection({ data, index }: { data: DeepDiveData; index: number })
         </div>
       )}
 
-      {/* Testimonial */}
-      <div className="mt-6 p-5 rounded-xl bg-white/5 border border-white/10">
-        <p className="text-slate-300 italic mb-3">&ldquo;{data.testimonial.quote}&rdquo;</p>
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00ff88]/30 to-purple-500/30" />
-          <div>
-            <div className="font-medium text-sm">{data.testimonial.author}</div>
-            <div className="text-xs text-slate-400">{data.testimonial.role}</div>
-          </div>
-        </div>
+      {/* Highlight */}
+      <div className="mt-6 p-5 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+        <div className="text-xs font-medium text-emerald-400 mb-2">{data.highlight.label}</div>
+        <p className="text-slate-300 leading-relaxed">{data.highlight.quote}</p>
       </div>
     </div>
   );
 
   const imageContent = (
     <div className="flex-1">
-      <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[3/2] bg-gradient-to-br from-white/5 to-white/[0.02] flex items-center justify-center">
-        <div className="text-slate-600 text-sm">Feature visualization</div>
+      <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[3/2]">
+        <img
+          src={data.image}
+          alt={data.title}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
       </div>
     </div>
   );
