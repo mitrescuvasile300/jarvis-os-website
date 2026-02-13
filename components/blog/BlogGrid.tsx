@@ -3,70 +3,14 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Clock, ArrowRight } from "lucide-react";
-
-const posts = [
-  {
-    slug: "building-ai-workforce",
-    title: "How I Built a 10-Agent AI Workforce",
-    excerpt: "From zero to fully autonomous team in 30 days. The architecture, the costs, and the results.",
-    category: "Tutorial",
-    readTime: "8 min read",
-    date: "Feb 12, 2026",
-    gradient: "from-[#00ff88] to-[#06b6d4]",
-  },
-  {
-    slug: "token-efficiency",
-    title: "Cut AI Costs by 60% with This Simple Trick",
-    excerpt: "Why pay $3/M tokens when shell scripts do the same for free? A practical guide to token optimization.",
-    category: "Optimization",
-    readTime: "5 min read",
-    date: "Feb 10, 2026",
-    gradient: "from-[#a855f7] to-[#ec4899]",
-  },
-  {
-    slug: "ai-agent-security",
-    title: "How to Keep Your AI Agents Safe: A Security Checklist",
-    excerpt: "Best practices for running autonomous AI agents securely, from sandboxing to permission controls.",
-    category: "Security",
-    readTime: "6 min read",
-    date: "Feb 8, 2026",
-    gradient: "from-[#f97316] to-[#eab308]",
-  },
-  {
-    slug: "automation-case-study",
-    title: "I Automated My Entire Content Pipeline with AI Agents",
-    excerpt: "How I set up a 5-agent workflow that handles research, writing, editing, and publishing — while I sleep.",
-    category: "Case Study",
-    readTime: "10 min read",
-    date: "Feb 5, 2026",
-    gradient: "from-[#3b82f6] to-[#06b6d4]",
-  },
-  {
-    slug: "memory-ledger",
-    title: "Why Your AI Agents Forget Everything (And How to Fix It)",
-    excerpt: "The importance of persistent memory and how Memory Ledger Protocol gives agents long-term context.",
-    category: "Architecture",
-    readTime: "7 min read",
-    date: "Feb 3, 2026",
-    gradient: "from-[#10b981] to-[#00ff88]",
-  },
-  {
-    slug: "future-of-coding",
-    title: "Elon Says AI Will Bypass Coding by 2026. Is He Right?",
-    excerpt: "Analyzing the prediction that AI will generate binaries directly from prompts and what it means for developers.",
-    category: "Opinion",
-    readTime: "6 min read",
-    date: "Feb 1, 2026",
-    gradient: "from-[#8b5cf6] to-[#a855f7]",
-  },
-];
+import { blogPosts } from "@/lib/blog-posts";
 
 export function BlogGrid() {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
+          {blogPosts.map((post, index) => (
             <motion.article
               key={post.slug}
               initial={{ opacity: 0, y: 30 }}
@@ -85,6 +29,11 @@ export function BlogGrid() {
                     <Clock className="w-3 h-3" />
                     {post.readTime}
                   </span>
+                  {!post.content && (
+                    <span className="px-2 py-0.5 bg-slate-800 text-slate-500 text-xs rounded-full">
+                      Coming Soon
+                    </span>
+                  )}
                 </div>
 
                 <h2 className="text-lg font-semibold text-white mb-2 group-hover:text-[#00ff88] transition-colors">
@@ -101,7 +50,7 @@ export function BlogGrid() {
                     href={`/blog/${post.slug}`}
                     className="flex items-center gap-1 text-[#00ff88] text-sm font-medium hover:gap-2 transition-all"
                   >
-                    Read <ArrowRight className="w-4 h-4" />
+                    {post.content ? 'Read' : 'Preview'} <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
