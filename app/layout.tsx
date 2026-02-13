@@ -18,11 +18,20 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Jarvis OS',
     locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1376,
+        height: 768,
+        alt: 'Jarvis OS — Your AI Operating System',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Jarvis OS — Your AI Operating System',
     description: 'Install your personal AI operating system. $29 one-time, lifetime access.',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
