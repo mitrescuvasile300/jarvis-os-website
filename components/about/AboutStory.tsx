@@ -31,10 +31,10 @@ export function AboutStory() {
           
           <div className="grid grid-cols-2 gap-4">
             {[
-              { number: "10+", label: "AI Agents" },
+              { number: "10+", label: "AI Agent Types" },
               { number: "$29", label: "One-time Price" },
-              { number: "180K+", label: "GitHub Stars" },
               { number: "∞", label: "Possibilities" },
+              { number: "0", label: "Subscriptions" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

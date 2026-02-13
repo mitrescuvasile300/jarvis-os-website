@@ -74,7 +74,7 @@ export function HeroSection(): JSX.Element {
         >
           <Sparkles className="w-4 h-4 text-emerald-400" />
           <span className="text-sm text-emerald-400 font-medium">
-            Trusted by 1,000+ founders
+            Now in Early Access — $29 one-time
           </span>
         </motion.div>
 
@@ -138,19 +138,11 @@ export function HeroSection(): JSX.Element {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-16 flex flex-col items-center gap-4"
         >
-          <div className="flex -space-x-3">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-600 to-slate-800 border-2 border-slate-950 flex items-center justify-center text-xs text-slate-300 font-medium"
-              >
-                {String.fromCharCode(64 + i)}
-              </div>
-            ))}
+          <div className="flex items-center gap-6 text-slate-500 text-sm">
+            <span>✓ No subscription</span>
+            <span>✓ Runs locally</span>
+            <span>✓ Lifetime updates</span>
           </div>
-          <p className="text-slate-500 text-sm">
-            Join 1,000+ professionals using Jarvis OS
-          </p>
         </motion.div>
       </div>
 

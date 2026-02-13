@@ -1,42 +1,34 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star, Quote } from 'lucide-react';
+import { Sparkles, Terminal, Brain, Zap, Shield, Clock } from 'lucide-react';
 
-interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-  rating: number;
-}
-
-const testimonials: Testimonial[] = [
+const highlights = [
   {
-    quote: "Jarvis OS completely transformed how I work. I went from drowning in tabs to having a clear system that actually works.",
-    author: "Sarah Chen",
-    role: "Founder",
-    company: "TechFlow",
-    rating: 5,
+    icon: Terminal,
+    title: 'One Command Install',
+    description: 'Get your AI OS running in under 60 seconds. Works on macOS, Linux, and Windows.',
   },
   {
-    quote: "The AI memory feature alone is worth 10x the price. It's like having a second brain that never forgets.",
-    author: "Marcus Rodriguez",
-    role: "Senior Developer",
-    company: "Stripe",
-    rating: 5,
+    icon: Brain,
+    title: 'Persistent Memory',
+    description: 'Unlike ChatGPT, Jarvis remembers everything. Your context compounds over time.',
   },
   {
-    quote: "I save at least 2 hours every day with the automation features. Best investment I've made for my productivity.",
-    author: "Emily Watson",
-    role: "Product Manager",
-    company: "Notion",
-    rating: 5,
+    icon: Zap,
+    title: 'Autonomous Execution',
+    description: 'Set tasks and walk away. Jarvis handles multi-step workflows end-to-end.',
   },
-];
-
-const companyLogos = [
-  'Vercel', 'Stripe', 'Linear', 'Notion', 'Figma'
+  {
+    icon: Shield,
+    title: 'Your Data, Your Machine',
+    description: 'Runs locally or on your cloud. No vendor lock-in, no data sharing.',
+  },
+  {
+    icon: Clock,
+    title: 'Save 10+ Hours/Week',
+    description: 'Automate the boring stuff. Focus on high-impact work that matters.',
+  },
 ];
 
 const containerVariants = {
@@ -44,13 +36,13 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -72,40 +64,35 @@ export function SocialProof(): JSX.Element {
             viewport={{ once: true }}
             className="text-emerald-400 font-medium mb-4 block"
           >
-            LOVED BY THOUSANDS
+            WHY JARVIS OS
           </motion.span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Don&apos;t just take our word for it
+            Your AI, your rules
           </h2>
-          <p className="text-slate-400 text-lg">
-            See what professionals are saying about Jarvis OS
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Not another SaaS subscription. Jarvis OS installs on your machine and works for you — 24/7, with full autonomy.
           </p>
         </motion.div>
 
-        {/* User Count Badge */}
+        {/* Early Access Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="flex justify-center mb-12"
         >
-          <div className="inline-flex items-center gap-4 bg-slate-800/50 border border-slate-700 rounded-full px-6 py-3">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400 border-2 border-slate-900"
-                />
-              ))}
-            </div>
-            <div className="text-left">
-              <p className="text-white font-bold">1,000+</p>
-              <p className="text-slate-400 text-sm">Happy users</p>
-            </div>
+          <div className="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-6 py-3">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span className="text-emerald-400 font-medium">
+              Now in Early Access — Be among the first
+            </span>
           </div>
         </motion.div>
 
-        {/* Testimonials Grid */}
+        {/* Highlights Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -113,63 +100,44 @@ export function SocialProof(): JSX.Element {
           viewport={{ once: true }}
           className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16"
         >
-          {testimonials.map((testimonial) => (
+          {highlights.slice(0, 3).map((item) => (
             <motion.div
-              key={testimonial.author}
+              key={item.title}
               variants={itemVariants}
               className="relative bg-slate-800/50 rounded-2xl p-6 lg:p-8 border border-slate-700/50 hover:border-emerald-500/30 transition-colors"
             >
-              {/* Quote Icon */}
-              <Quote className="w-8 h-8 text-emerald-500/20 absolute top-6 right-6" />
-
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
+                <item.icon className="w-6 h-6 text-emerald-400" />
               </div>
-
-              {/* Quote */}
-              <p className="text-slate-300 mb-6 leading-relaxed">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400" />
-                <div>
-                  <p className="text-white font-semibold">{testimonial.author}</p>
-                  <p className="text-slate-400 text-sm">
-                    {testimonial.role} at {testimonial.company}
-                  </p>
-                </div>
-              </div>
+              <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+              <p className="text-slate-400 leading-relaxed">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Company Logos */}
+        {/* Bottom Row */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="text-center"
+          className="grid md:grid-cols-2 gap-6 lg:gap-8"
         >
-          <p className="text-slate-500 text-sm mb-6">
-            Trusted by professionals at
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
-            {companyLogos.map((company) => (
-              <motion.div
-                key={company}
-                whileHover={{ scale: 1.05 }}
-                className="text-slate-600 hover:text-slate-400 font-bold text-xl transition-colors cursor-default"
-              >
-                {company}
-              </motion.div>
-            ))}
-          </div>
+          {highlights.slice(3).map((item) => (
+            <motion.div
+              key={item.title}
+              variants={itemVariants}
+              className="relative bg-slate-800/50 rounded-2xl p-6 lg:p-8 border border-slate-700/50 hover:border-emerald-500/30 transition-colors flex items-start gap-4"
+            >
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                <item.icon className="w-6 h-6 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-slate-400 leading-relaxed">{item.description}</p>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
