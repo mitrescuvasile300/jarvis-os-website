@@ -19,17 +19,17 @@ const itemVariants = {
 };
 
 const problems = [
-  'Context switching kills your focus',
-  'Ideas get lost across 10+ apps',
-  'Manual repetitive tasks drain energy',
-  'No unified view of your work',
+  'You manage 5+ tools and nothing talks to each other',
+  'AI chatbots forget everything after each session',
+  'Automating workflows requires coding or Zapier hacks',
+  'You\'re the bottleneck — everything needs your input',
 ];
 
 const solutions = [
-  'One system for everything',
-  'AI remembers and connects your ideas',
-  'Automate the boring stuff',
-  'Complete visibility and control',
+  'Jarvis is one brain that handles everything',
+  'Persistent memory — Jarvis remembers forever',
+  'Tell Jarvis what to do in plain English',
+  'Jarvis delegates to specialized agents autonomously',
 ];
 
 export function ProblemSolution(): JSX.Element {
@@ -47,7 +47,7 @@ export function ProblemSolution(): JSX.Element {
             Sound familiar?
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Developers waste 40% of their time on context switching
+            You spend more time managing tools than actually getting work done
           </p>
         </motion.div>
 
@@ -69,7 +69,7 @@ export function ProblemSolution(): JSX.Element {
               <div className="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center">
                 <AlertTriangle className="w-6 h-6 text-red-400" />
               </div>
-              <h3 className="text-2xl font-bold text-white">The Problem</h3>
+              <h3 className="text-2xl font-bold text-white">Without Jarvis</h3>
             </motion.div>
 
             <div className="space-y-4">
@@ -92,7 +92,7 @@ export function ProblemSolution(): JSX.Element {
               className="mt-8 p-4 bg-red-500/5 border border-red-500/10 rounded-xl"
             >
               <p className="text-red-300 text-sm font-medium">
-                Result: You&apos;re busy all day but feel like you got nothing done.
+                Result: You&apos;re the bottleneck. Every task needs you. Nothing runs without you.
               </p>
             </motion.div>
           </motion.div>
@@ -114,7 +114,7 @@ export function ProblemSolution(): JSX.Element {
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
                 <Zap className="w-6 h-6 text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold text-white">The Solution</h3>
+              <h3 className="text-2xl font-bold text-white">With Jarvis OS</h3>
             </motion.div>
 
             <div className="space-y-4">
@@ -137,7 +137,7 @@ export function ProblemSolution(): JSX.Element {
               className="mt-8 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-xl"
             >
               <p className="text-emerald-300 text-sm font-medium">
-                Result: Jarvis OS centralizes everything so you can focus on what matters.
+                Result: Jarvis runs the show. You focus on high-level decisions. Agents handle the rest.
               </p>
             </motion.div>
           </motion.div>

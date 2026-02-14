@@ -1,34 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Brain, Zap, Clock, ArrowRight } from 'lucide-react';
+import { MessageSquare, Bot, Globe, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 interface Feature {
-  icon: typeof Brain;
+  icon: typeof Bot;
   title: string;
   description: string;
   gradient: string;
+  tag: string;
 }
 
 const features: Feature[] = [
   {
-    icon: Brain,
-    title: 'AI Memory',
-    description: 'Never forget anything. Your AI remembers every conversation, idea, and decision — instantly searchable and always connected.',
-    gradient: 'from-purple-500 to-pink-500',
-  },
-  {
-    icon: Zap,
-    title: 'Smart Automation',
-    description: 'Build powerful automations without code. Let AI handle the repetitive work while you focus on high-impact tasks.',
+    icon: MessageSquare,
+    title: 'Chat with Jarvis',
+    description: 'Talk to Jarvis instantly — no setup, no agent creation. Ask questions, give tasks, brainstorm ideas. Jarvis is always online and ready.',
     gradient: 'from-emerald-500 to-cyan-500',
+    tag: 'Always Available',
   },
   {
-    icon: Clock,
-    title: 'Time Saving',
-    description: 'Save 10+ hours every week. Users report getting back an entire workday just from reduced context switching.',
+    icon: Bot,
+    title: 'Agent Spawning',
+    description: 'Say "Create a trading agent" and Jarvis builds it. Specialized agents for trading, research, content, DevOps — each with their own skills and memory.',
+    gradient: 'from-purple-500 to-pink-500',
+    tag: 'Autonomous',
+  },
+  {
+    icon: Globe,
+    title: 'Agent Hub',
+    description: 'A group chat where all your agents collaborate. Jarvis orchestrates, agents report, and you see everything happening in real time.',
     gradient: 'from-orange-500 to-yellow-500',
+    tag: 'Multi-Agent',
   },
 ];
 
@@ -63,16 +67,16 @@ export function FeaturesPreview(): JSX.Element {
             viewport={{ once: true }}
             className="text-emerald-400 font-medium mb-4 block"
           >
-            POWERFUL FEATURES
+            HOW IT WORKS
           </motion.span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Everything you need to{' '}
+            One conversation.{' '}
             <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              10x your output
+              Infinite agents.
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Jarvis OS combines AI memory, automation, and intelligent workflows into one powerful system.
+            Talk to Jarvis. He creates and coordinates specialized agents to handle anything you throw at him.
           </p>
         </motion.div>
 
@@ -89,10 +93,14 @@ export function FeaturesPreview(): JSX.Element {
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
               className="group relative bg-slate-900 rounded-2xl p-6 lg:p-8 border border-slate-800 hover:border-slate-700 transition-colors duration-300"
             >
+              {/* Tag */}
+              <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${feature.gradient} text-white mb-4 opacity-80`}>
+                {feature.tag}
+              </span>
+
               {/* Icon */}
               <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} p-0.5 mb-6`}>
                 <div className="w-full h-full bg-slate-900 rounded-xl flex items-center justify-center">
-                  <feature.icon className={`w-7 h-7 bg-gradient-to-br ${feature.gradient} bg-clip-text`} style={{ color: 'transparent', background: `linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to))`, WebkitBackgroundClip: 'text' }} />
                   <feature.icon className="w-7 h-7 text-white" />
                 </div>
               </div>
@@ -110,6 +118,73 @@ export function FeaturesPreview(): JSX.Element {
             </motion.div>
           ))}
         </div>
+
+        {/* Architecture Diagram */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mt-16 max-w-3xl mx-auto"
+        >
+          <div className="relative bg-slate-900/80 rounded-2xl border border-slate-800 p-8 overflow-hidden">
+            {/* Background glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl" />
+            
+            <div className="relative">
+              {/* Title */}
+              <div className="text-center mb-8">
+                <span className="text-xs text-slate-500 font-medium tracking-wider">ARCHITECTURE</span>
+              </div>
+
+              {/* User → Jarvis */}
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="text-center">
+                  <div className="w-14 h-14 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-2">
+                    <span className="text-lg">👤</span>
+                  </div>
+                  <span className="text-xs text-slate-500">You</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="w-12 h-px bg-gradient-to-r from-slate-700 to-emerald-500" />
+                  <span className="text-xs text-slate-500 px-2 whitespace-nowrap">&quot;Create a trading bot&quot;</span>
+                  <div className="w-12 h-px bg-gradient-to-r from-emerald-500 to-slate-700" />
+                </div>
+                <div className="text-center">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto mb-2 shadow-lg shadow-emerald-500/10">
+                    <span className="text-lg">⚡</span>
+                  </div>
+                  <span className="text-xs text-emerald-400 font-semibold">Jarvis</span>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex-1 h-px bg-slate-800" />
+                <span className="text-xs text-slate-600">spawns & coordinates</span>
+                <div className="flex-1 h-px bg-slate-800" />
+              </div>
+
+              {/* Agents Row */}
+              <div className="flex items-center justify-center gap-6 flex-wrap">
+                {[
+                  { icon: '💹', name: 'Trading', desc: 'Crypto analysis' },
+                  { icon: '🔬', name: 'Research', desc: 'Web research' },
+                  { icon: '✍️', name: 'Content', desc: 'Writing & social' },
+                  { icon: '🛠️', name: 'DevOps', desc: 'Infrastructure' },
+                ].map((agent) => (
+                  <div key={agent.name} className="text-center">
+                    <div className="w-12 h-12 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-1.5">
+                      <span>{agent.icon}</span>
+                    </div>
+                    <span className="text-xs text-white font-medium block">{agent.name}</span>
+                    <span className="text-[10px] text-slate-500">{agent.desc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Link to All Features */}
         <motion.div

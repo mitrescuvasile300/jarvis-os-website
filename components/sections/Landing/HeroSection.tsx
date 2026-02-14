@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, MessageSquare, Bot, Globe } from 'lucide-react';
 import Link from 'next/link';
 
 const floatingAnimation = {
@@ -22,6 +22,18 @@ const gridAnimation = {
     opacity: [0.1, 0.3, 0.1],
     transition: {
       duration: 4,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const pulseAnimation = {
+  animate: {
+    scale: [1, 1.05, 1],
+    opacity: [0.5, 1, 0.5],
+    transition: {
+      duration: 2,
       repeat: Infinity,
       ease: 'easeInOut',
     },
@@ -85,9 +97,12 @@ export function HeroSection(): JSX.Element {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight"
         >
-          Your{' '}
+          Meet{' '}
           <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-            AI Operating System
+            Jarvis
+          </span>
+          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-5xl mt-2 text-slate-300 font-semibold">
+            Your Autonomous AI Brain
           </span>
         </motion.h1>
 
@@ -98,11 +113,57 @@ export function HeroSection(): JSX.Element {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg sm:text-xl md:text-2xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed"
         >
-          Transform scattered thoughts into autonomous execution.
+          Talk to Jarvis. He creates agents, delegates tasks, and gets things done —
+          <span className="text-emerald-400 font-medium"> autonomously</span>.
           <span className="block mt-2 text-slate-500">
-            The complete AI-powered productivity system.
+            Like having a CTO, assistant, and entire dev team in one.
           </span>
         </motion.p>
+
+        {/* Architecture Preview — Mini Diagram */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="max-w-xl mx-auto mb-10"
+        >
+          <div className="flex items-center justify-center gap-3 sm:gap-4 text-sm">
+            {/* You */}
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center">
+                <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </div>
+              <span className="text-slate-500 text-xs">You</span>
+            </div>
+            
+            {/* Arrow */}
+            <div className="flex-1 max-w-[40px] h-px bg-gradient-to-r from-slate-700 to-emerald-500/50" />
+            
+            {/* Jarvis */}
+            <div className="flex flex-col items-center gap-1.5">
+              <motion.div
+                animate={pulseAnimation.animate}
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 flex items-center justify-center shadow-lg shadow-emerald-500/20"
+              >
+                <span className="text-xl sm:text-2xl">⚡</span>
+              </motion.div>
+              <span className="text-emerald-400 text-xs font-semibold">Jarvis</span>
+            </div>
+            
+            {/* Arrow */}
+            <div className="flex-1 max-w-[40px] h-px bg-gradient-to-r from-emerald-500/50 to-slate-700" />
+            
+            {/* Agents */}
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="flex gap-1">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-xs">💹</div>
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-xs">🔬</div>
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-xs">✍️</div>
+              </div>
+              <span className="text-slate-500 text-xs">Agents</span>
+            </div>
+          </div>
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
@@ -122,13 +183,15 @@ export function HeroSection(): JSX.Element {
             </motion.button>
           </Link>
           
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-xl text-lg border border-slate-700 hover:border-slate-600 transition-all duration-200"
-          >
-            Watch Demo
-          </motion.button>
+          <Link href="/features">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-xl text-lg border border-slate-700 hover:border-slate-600 transition-all duration-200"
+            >
+              See How It Works
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Trust Indicators */}
@@ -140,8 +203,8 @@ export function HeroSection(): JSX.Element {
         >
           <div className="flex items-center gap-6 text-slate-500 text-sm">
             <span>✓ No subscription</span>
-            <span>✓ Runs locally</span>
-            <span>✓ Lifetime updates</span>
+            <span>✓ Runs on your machine</span>
+            <span>✓ 29+ AI models</span>
           </div>
         </motion.div>
       </div>

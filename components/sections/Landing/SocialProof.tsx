@@ -1,33 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles, Terminal, Brain, Zap, Shield, Clock } from 'lucide-react';
+import { Terminal, Brain, Zap, Shield, MessageSquare, Users } from 'lucide-react';
 
 const highlights = [
   {
-    icon: Terminal,
-    title: 'One Command Install',
-    description: 'Get your AI OS running in under 60 seconds. Works on macOS, Linux, and Windows.',
+    icon: MessageSquare,
+    title: 'Chat-First Interface',
+    description: 'Talk to Jarvis like a person. No menus, no forms — just describe what you need and Jarvis handles it.',
   },
   {
     icon: Brain,
     title: 'Persistent Memory',
-    description: 'Unlike ChatGPT, Jarvis remembers everything. Your context compounds over time.',
+    description: 'Unlike ChatGPT, Jarvis remembers everything. Your context compounds over time — agents get smarter daily.',
   },
   {
     icon: Zap,
     title: 'Autonomous Execution',
-    description: 'Set tasks and walk away. Jarvis handles multi-step workflows end-to-end.',
+    description: 'Jarvis doesn\'t wait for instructions. He creates agents, delegates tasks, and reports back when done.',
+  },
+  {
+    icon: Users,
+    title: 'Multi-Agent Collaboration',
+    description: 'Agents work together in the Hub. Trading agent checks data, research agent analyzes it, content agent writes about it.',
   },
   {
     icon: Shield,
     title: 'Your Data, Your Machine',
-    description: 'Runs locally or on your cloud. No vendor lock-in, no data sharing.',
+    description: 'Runs locally or on your VPS. No vendor lock-in, no data sharing. Works with Ollama for 100% offline operation.',
   },
   {
-    icon: Clock,
-    title: 'Save 10+ Hours/Week',
-    description: 'Automate the boring stuff. Focus on high-impact work that matters.',
+    icon: Terminal,
+    title: '29+ AI Models',
+    description: 'GPT-5, Claude Opus 4.6, Gemini 3, Llama 3.1 — pick the best model for each agent. Mix and match freely.',
   },
 ];
 
@@ -67,10 +72,13 @@ export function SocialProof(): JSX.Element {
             WHY JARVIS OS
           </motion.span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Your AI, your rules
+            Not another chatbot.{' '}
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              An operating system.
+            </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Not another SaaS subscription. Jarvis OS installs on your machine and works for you — 24/7, with full autonomy.
+            Jarvis is the brain. Agents are the hands. You&apos;re the boss.
           </p>
         </motion.div>
 
@@ -121,21 +129,19 @@ export function SocialProof(): JSX.Element {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-6 lg:gap-8"
+          className="grid md:grid-cols-3 gap-6 lg:gap-8"
         >
           {highlights.slice(3).map((item) => (
             <motion.div
               key={item.title}
               variants={itemVariants}
-              className="relative bg-slate-800/50 rounded-2xl p-6 lg:p-8 border border-slate-700/50 hover:border-emerald-500/30 transition-colors flex items-start gap-4"
+              className="relative bg-slate-800/50 rounded-2xl p-6 lg:p-8 border border-slate-700/50 hover:border-emerald-500/30 transition-colors"
             >
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
                 <item.icon className="w-6 h-6 text-emerald-400" />
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{item.description}</p>
-              </div>
+              <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+              <p className="text-slate-400 leading-relaxed">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>

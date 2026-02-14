@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Bot, Brain, PlayCircle, GitMerge, HeartPulse, PiggyBank, LucideIcon } from 'lucide-react';
+import { MessageSquare, Bot, Globe, Brain, GitMerge, PiggyBank, LucideIcon } from 'lucide-react';
 
 interface Feature {
   icon: LucideIcon;
@@ -15,58 +15,58 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    icon: Bot,
+    icon: MessageSquare,
     iconColor: '#00ff88',
     accentGradient: 'from-[#00ff88]/20 to-cyan-500/20',
-    title: 'AI Agents',
-    tagline: 'Deploy specialized agents for every task',
-    description: 'Create purpose-built agents that handle specific workflows autonomously. Each agent learns your preferences and improves over time.',
-    highlights: ['Task-specific specialization', 'Learning from feedback', 'Collaborative agent teams'],
+    title: 'Direct Jarvis Chat',
+    tagline: 'Talk to your AI — no setup needed',
+    description: 'Jarvis is always available. Open the dashboard and start chatting. Ask questions, give tasks, brainstorm. WebSocket streaming with real-time responses.',
+    highlights: ['Instant availability — no agent creation needed', 'Suggestion chips for quick actions', 'Real-time streaming with typing indicator'],
+  },
+  {
+    icon: Bot,
+    iconColor: '#a855f7',
+    accentGradient: 'from-purple-500/20 to-pink-500/20',
+    title: 'Autonomous Agent Spawning',
+    tagline: 'Jarvis creates agents for you',
+    description: 'Say "Create a trading agent" and Jarvis builds it — choosing the right template, model, and tools. Each agent is specialized for its domain.',
+    highlights: ['Natural language agent creation', '7 built-in templates (Trading, Research, Content...)', 'Agents appear in Hub automatically'],
+  },
+  {
+    icon: Globe,
+    iconColor: '#3b82f6',
+    accentGradient: 'from-blue-500/20 to-indigo-500/20',
+    title: 'Agent Hub',
+    tagline: 'Group chat for all your agents',
+    description: 'See all agents in one place. Jarvis orchestrates, agents report progress, and you watch the collaboration happen in real time.',
+    highlights: ['Live participant sidebar with status', 'Multi-agent group conversations', 'Jarvis as autonomous orchestrator'],
   },
   {
     icon: Brain,
-    iconColor: '#a855f7',
-    accentGradient: 'from-purple-500/20 to-pink-500/20',
+    iconColor: '#ec4899',
+    accentGradient: 'from-pink-500/20 to-rose-500/20',
     title: 'Persistent Memory',
-    tagline: 'Never lose context across sessions',
-    description: 'Your AI remembers everything—conversations, decisions, preferences, and patterns. Context persists forever, not just within sessions.',
-    highlights: ['Cross-session recall', 'Semantic understanding', 'Encrypted storage'],
-  },
-  {
-    icon: PlayCircle,
-    iconColor: '#3b82f6',
-    accentGradient: 'from-blue-500/20 to-indigo-500/20',
-    title: 'Autonomous Execution',
-    tagline: 'Works 24/7 without supervision',
-    description: 'Set it and forget it. Your agents execute complex multi-step workflows around the clock, handling edge cases and exceptions automatically.',
-    highlights: ['Zero supervision required', 'Intelligent error handling', 'Background processing'],
+    tagline: 'Never lose context again',
+    description: 'Jarvis remembers every conversation, decision, and preference across sessions. 4-layer memory system with semantic search and SQLite FTS5.',
+    highlights: ['Short-term, working, long-term & semantic layers', 'Full-text search across all memories', 'Context compounds over time'],
   },
   {
     icon: GitMerge,
     iconColor: '#06b6d4',
     accentGradient: 'from-cyan-500/20 to-teal-500/20',
-    title: 'Multi-Model Routing',
-    tagline: 'Always use the best AI for the job',
-    description: 'Automatically routes tasks to Claude, GPT, Gemini, or local models based on the task type, complexity, and cost optimization goals.',
-    highlights: ['Automatic model selection', 'Fallback chains', 'Best-in-class results'],
-  },
-  {
-    icon: HeartPulse,
-    iconColor: '#ec4899',
-    accentGradient: 'from-pink-500/20 to-rose-500/20',
-    title: 'Self-Healing',
-    tagline: 'Automatically recovers from failures',
-    description: 'When things go wrong, Jarvis diagnoses the issue, retries with different strategies, and escalates only when human input is truly needed.',
-    highlights: ['Auto-retry logic', 'Error pattern learning', 'Smart escalation'],
+    title: '29+ AI Models',
+    tagline: 'Pick the best model for each agent',
+    description: 'GPT-5.2, Claude Opus 4.6, Gemini 3 Pro, Llama 3.1 — use any model from OpenAI, Anthropic, Google, or Ollama. Mix and match per agent.',
+    highlights: ['Multi-provider support built-in', 'Different models for different agents', 'Ollama for 100% free local AI'],
   },
   {
     icon: PiggyBank,
     iconColor: '#eab308',
     accentGradient: 'from-yellow-500/20 to-orange-500/20',
-    title: 'Cost Optimization',
-    tagline: 'Save 60% on AI costs with smart routing',
-    description: 'Intelligent model selection and caching means you never overpay. Use expensive models only when necessary, local models when possible.',
-    highlights: ['Smart caching layer', 'Cost-aware routing', 'Usage analytics'],
+    title: 'Self-Hosted & Private',
+    tagline: 'Your machine. Your data. Your rules.',
+    description: 'Runs on your laptop or VPS via Docker. No data sent to third parties. One-command install, 30-second builds, zero dependencies.',
+    highlights: ['Docker Compose — one command setup', 'Works offline with Ollama', '$29 one-time — no subscriptions ever'],
   },
 ];
 
@@ -80,10 +80,10 @@ export function FeatureGrid() {
             CORE CAPABILITIES
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Six Superpowers in One Template
+            Six Superpowers in One System
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Each feature designed to eliminate friction and maximize output
+            Everything Jarvis can do — from direct chat to autonomous multi-agent orchestration
           </p>
         </div>
 
